@@ -1,0 +1,8 @@
+baseURL = "https://youngdynasty.net/"
+languageCode = "en-us"
+title = "Young Dynasty"
+theme = "tale"
+pygmentsCodeFences = true
+pygmentsLinenos = "table"
+pygmentsUseClasses = true
+footnoteReturnLinkContents = "↩︎︎"

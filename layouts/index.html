@@ -1,0 +1,25 @@
+{{ define "main" }}
+
+<main>
+	{{ partial "index/introduction.html" . }}
+
+	<section class="catalogue">
+		{{ range where .Paginator.Pages ".Section" "posts" }}
+			{{ .Render "summary" }}
+		{{ end }}
+	</section>
+	
+	{{ if or .Paginator.HasPrev .Paginator.HasNext }}
+	<section class="pagination">
+		{{ if .Paginator.HasPrev }}
+			<a href="{{ .Paginator.Prev.URL }}" class="left arrow">&#8592;</a>
+		{{ end }}
+		{{ if .Paginator.HasNext }}
+			<a href="{{ .Paginator.Next.URL }}" class="right arrow">&#8594;</a>
+		{{ end }}
+		<span>{{ .Paginator.PageNumber }}</span>
+	</section>
+	{{ end }}
+</main>
+
+{{ end }}
