@@ -1,23 +1,22 @@
 ---
-title: "Writing Mac Apps in Go"
-date: 2019-01-11T09:44:45+01:00
-summary: A guide for embedding Go within native macOS applications.
-draft: true
+title: "Writing Apps in Go and Swift"
+date: 2019-01-29T20:05:45+01:00
+summary: A guide for wrapping Go code in Swift for use within a native macOS or iOS application.
 ---
 
 Go makes it easy to create safe, reliable and efficient software. Concurrency is part of the language, making otherwise complicated code more intuitive to write. It can compile binaries for any non-obscure platform and has a quite capable standard library with a lively developer community. 
 
-Maybe I'm just not very clever, but even after years of using [Grand Central Dispatch](https://en.wikipedia.org/wiki/Grand_Central_Dispatch) ("GCD"), I still find it hard to write maintainable multi-threaded code.[^1] Although GCD offers a great improvement over how asynchronous code was written before Snow Leopard,[^2] I couldn't help but wonder what it would be like if I could focus on creating and designing APIs without having to worry about the minutiae of parallelism (threads, semaphores, locks, barriers, etc.).
+Although Swift is cross platform, it's perhaps most commonly used to develop apps for Apple's platforms. Maybe I'm just not very clever, but even after years of using [Grand Central Dispatch](https://en.wikipedia.org/wiki/Grand_Central_Dispatch) ("GCD"), I still find it hard to write maintainable multi-threaded code[^1] for macOS or iOS. Although GCD offers a great improvement over how asynchronous code was written before Snow Leopard,[^2] I couldn't help but wonder what it would be like if I could focus on creating and designing APIs without having to worry about the minutiae of parallelism (threads, semaphores, locks, barriers, etc.).
 
 [^1]: The subtleties required to implement coordination between routines and access to shared variables, especially after periods of inactivity in the codebase, is hard.
 
 [^2]: Back in my day, we called macOS "OS X". And we managed `NSThread` and `NSRunLoop` instances ourselves. Get off my lawn! 👴
 
-All that to say, when I discovered a straight-forward and performant way to call Go code within a Mac app,[^3] it felt like I unlocked new developer super-powers!
+All that to say, when I discovered a straight-forward and performant way to call Go code from Swift, it felt like I unlocked new developer super-powers!
 
-[^3]: Go code is also embeddable on on iOS, Android and/or Windows.
+As a demonstration, let's build a library to escape/unescape HTML tags in Go and call it from Swift. This technique should work regardless of the platform (iOS, macOS, Linux, ...), but for simplicity, this post will target macOS.
 
-As a demonstration, let's build a library to escape/unescape HTML tags in Go and call it from Swift, one of the languages of choice when writing a native Mac app.
+If you're curious to see an example of such a hybrid app, check out [Emporter](https://emporter.app) on the [Mac App Store](https://itunes.apple.com/us/app/emporter/id1406832001?mt=12&ls=1).
 
 _There's a complimentary project hosted on [GitHub](https://github.com/mikepulaski/go-swift) if you're a "hands on" learner._
 
@@ -81,9 +80,9 @@ Assuming you're in the same directory as the Go source, the library can be compi
 go build --buildmode=c-archive -o libhtmlescaper.a
 ```
 
-We've specified an explicit name and extension to use for our library, which helps makes it a little easier to bundle for use in Xcode. The build will also output a generated header[^4] `libhtmlescaper.h` which exposes all of the exported functions / types available when linking the archive. 
+We've specified an explicit name and extension to use for our library, which helps makes it a little easier to bundle for use in Xcode. The build will also output a generated header[^3] `libhtmlescaper.h` which exposes all of the exported functions / types available when linking the archive. 
 
-[^4]: The generated header is not very easy to read. In real projects, I tend to write my own headers for well-documented code.
+[^3]: The generated header is not very easy to read. In real projects, I tend to write my own headers for well-documented code.
 
 ## [Calling Go from Swift](#swift) {#swift}
 
