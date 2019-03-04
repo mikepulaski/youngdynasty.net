@@ -1,8 +1,7 @@
 ---
 title: "GDPR Is An Asset"
-date: 2019-01-07T11:28:39+01:00
-summary: Regulations for protecting user data help us establish trust.
-draft: true
+date: 2019-03-04T13:00:39+01:00
+summary: Regulations for protecting user data helps establish trust.
 ---
 
 The [General Data Protection Regulation](https://en.wikipedia.org/wiki/General_Data_Protection_Regulation) ("GDPR") is a regulation in European law which essentially defines how a user's personal information must be handled. If a company serves Europeans and it does not follow these regulations, it is at risk for receiving hefty fines.
@@ -15,12 +14,10 @@ The funny thing is, though, if I tried to explain my frustration with anyone out
 
 These rheotorical questions made me realize something so obvious: **GDPR compliance will help me establish trust with users**. This is particularly important for a small company, such as mine, wishing to attract new customers.
 
-Let me frame this train of thought using [Emporter](https://emporter.app) as an example.
-
-Emporter creates a public, secure URL which can be used to access a folder or server on your Mac. There's a certain level of trust that needs to be established in order for people to use it, in terms of privacy and security.
+[Emporter](https://emporter.app) creates a public, secure URL which can be used to access a folder or server on a Mac. There's a certain level of trust that needs to be established in order for people to use it, in terms of privacy and security.
 
 GDPR compliance itself does not mean that an app respects your privacy, but it allows the opportunity to provide confidence that its author cares. And, because I actually *do* care, Emporter does *not* collect or store user data. To address security concerns, I distribute it within the Mac App Store because its applications are reviewed, signed, and only run within a sandboxed environment.
 
-In the end, I worked closely with my friend [Camille Caffiot](https://www.linkedin.com/in/camillegaffiot) on the [Privacy Policy](https://emporter.app/privacy) to make sure I was compliant. It did cost more money than using a premade policy or template, but establishing trust and protecting myself in terms of liability is so important that it was absolutely worth every *centime*.
+In the end, I worked closely with my friend [Camille Caffiot](https://twitter.com/cmelven) on the [Privacy Policy](https://emporter.app/privacy) to make sure I was compliant. It did cost more money than using a premade policy or template, but establishing trust and protecting myself in terms of liability is so important that it was absolutely worth every *centime*.
 
-Maybe it's a little harder to launch projects now, but our industry is maturing. As a developer, I think my negativity was largely due to the fact that I became spoiled.
+While perhaps there is more friction launching certain kinds of projects now, it's because the tech industry is maturing. As a developer, I think my negativity was largely due to the fact that I became spoiled.
