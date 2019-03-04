@@ -3,8 +3,8 @@ build:
 
 .PHONY: clean
 clean:
-	@rm -r build
-	 
+	@if [ -d build ]; then rm -r build 2>&1 > /dev/null; fi
+
 .PHONY: dev
 dev: URL ?= https://blog-u68g.emporter.eu
 dev:
@@ -31,7 +31,7 @@ deploy:
 
 	@set -a \
 		&& AWS_ACCESS_KEY_ID=$(KEY) AWS_SECRET_ACCESS_KEY=$(SECRET) \
-		&& aws s3 sync --acl public-read ./build s3://youngdynasty.net \
+		&& aws s3 sync --acl public-read --region eu-west-3 ./build s3://youngdynasty.net \
 		&& aws cloudfront create-invalidation --distribution E3LP7JN47MB6W0 --paths "/*" > /dev/null
 
 	@echo "OK"
