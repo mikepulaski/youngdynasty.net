@@ -12,7 +12,7 @@ Bear in mind, I reside in Paris, and Young Dynasty is a French company. I had to
 
 The funny thing is, though, if I tried to explain my frustration with anyone outside of tech, I was often met with a blank stare. *Why wouldn't a company protect their user's data? If a company is storing my data, it's not theirs to keep. Aren't all professionals subject to regulations? What makes tech so special?*
 
-These rheotorical questions made me realize something so obvious: **GDPR compliance will help me establish trust with users**. This is particularly important for a small company, such as mine, wishing to attract new customers.
+These rhetorical questions made me realize something so obvious: **GDPR compliance will help me establish trust with users**. This is particularly important for a small company, such as mine, wishing to attract new customers.
 
 [Emporter](https://emporter.app) creates a public, secure URL which can be used to access a folder or server on a Mac. There's a certain level of trust that needs to be established in order for people to use it, in terms of privacy and security.
 
