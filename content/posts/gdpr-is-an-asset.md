@@ -1,7 +1,7 @@
 ---
 title: "GDPR Is An Asset"
 date: 2019-03-04T13:00:39+01:00
-summary: Regulations for protecting user data helps establish trust.
+summary: Regulations protecting user data help establish trust.
 ---
 
 The [General Data Protection Regulation](https://en.wikipedia.org/wiki/General_Data_Protection_Regulation) ("GDPR") is a regulation in European law which essentially defines how a user's personal information must be handled. If a company serves Europeans and it does not follow these regulations, it is at risk for receiving hefty fines.
