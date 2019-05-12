@@ -3,4 +3,4 @@
 	url = https://github.com/EmielH/tale-hugo.git
 [submodule "code/go-swift"]
 	path = code/go-swift
-	url = https://github.com/mikepulaski/go-swift
+	url = https://github.com/youngdynasty/go-swift

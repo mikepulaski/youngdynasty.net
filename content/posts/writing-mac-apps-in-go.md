@@ -18,7 +18,7 @@ As a demonstration, let's build a library to escape/unescape HTML tags in Go and
 
 If you're curious to see an example of such a hybrid app, check out [Emporter](https://emporter.app) on the [Mac App Store](https://itunes.apple.com/us/app/emporter/id1406832001?mt=12&ls=1).
 
-_There's a complementary project hosted on [GitHub](https://github.com/mikepulaski/go-swift) if you're a "hands on" learner._
+_There's a complementary project hosted on [GitHub](https://github.com/youngdynasty/go-swift) if you're a "hands on" learner._
 
 ## [Writing a Go library](#go) {#go}
 
@@ -146,4 +146,4 @@ Give [Emporter](https://emporter.app) a try and let me know how it compares to a
 
 In this article, we've written a simple Go library which was embedded in a native Mac app. Although we've focused on macOS, this technique will work for any platform that Go supports with C bindings.
 
-You can download an example project on [GitHub](https://github.com/mikepulaski/go-swift).
+You can download an example project on [GitHub](https://github.com/youngdynasty/go-swift).
