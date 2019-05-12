@@ -18,6 +18,6 @@ These rhetorical questions made me realize something so obvious: **GDPR complian
 
 GDPR compliance itself does not mean that an app respects your privacy, but it allows the opportunity to provide confidence that its author cares. And, because I actually *do* care, Emporter does *not* collect or store user data. To address security concerns, I distribute it within the Mac App Store because its applications are reviewed, signed, and only run within a sandboxed environment.
 
-In the end, I worked closely with my friend [Camille Caffiot](https://twitter.com/cmelven) on the [Privacy Policy](https://emporter.app/privacy) to make sure I was compliant. It did cost more money than using a premade policy or template, but establishing trust and protecting myself in terms of liability is so important that it was absolutely worth every *centime*.
+In the end, I worked closely with my friend [Camille Caffiot](https://twitter.com/kasmyln) on the [Privacy Policy](https://emporter.app/privacy) to make sure I was compliant. It did cost more money than using a premade policy or template, but establishing trust and protecting myself in terms of liability is so important that it was absolutely worth every *centime*.
 
 While perhaps there is more friction launching certain kinds of projects now, it's because the tech industry is maturing. As a developer, I think my negativity was largely due to the fact that I became spoiled.
