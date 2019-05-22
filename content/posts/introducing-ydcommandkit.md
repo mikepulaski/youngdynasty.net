@@ -5,7 +5,7 @@ author: Mikey
 summary: Write native macOS apps for the command-line using YDCommandKit.
 ---
 
-I recently created a command-line interface (CLI) create secure URLs to a Mac by automating [Emporter.app](https://emporter.app). Quite naturally, I didn't want to write my own code to do perform the basics, such as parsing command-line arguments or handling options in a type-safe way.
+I recently created a command-line interface (CLI) create secure URLs to the Mac by automating [Emporter.app](https://emporter.app). Quite naturally, I didn't want to write my own code to do perform the basics, such as parsing command-line arguments or handling options in a type-safe way.
 
 Much to my surprise, there were not any viable libraries that could help me do this. Seriously. Let me elaborate.
 
