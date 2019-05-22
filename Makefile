@@ -6,8 +6,9 @@ clean:
 	@if [ -d build ]; then rm -r build 2>&1 > /dev/null; fi
 
 .PHONY: dev
-dev: URL ?= https://blog-u68g.emporter.eu
+dev: URL ?= $(shell emporter get -q 1313)
 dev:
+	@if [ -z "$(URL)" ]; then echo "*** Emporter URL not found." &> 2; exit 1; fi
 	@hugo server --baseURL="$(URL)" --appendPort=false --liveReloadPort=443 --buildDrafts
 
 # ----------------------------------------------------------------------------------------
