@@ -1,6 +1,7 @@
 ---
 title: "GDPR Is An Asset"
 date: 2019-03-04T13:00:39+01:00
+author: Mikey
 summary: Regulations protecting user data help establish trust.
 ---
 

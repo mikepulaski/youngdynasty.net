@@ -1,6 +1,7 @@
 ---
 title: "Writing Apps in Go and Swift"
 date: 2019-01-29T20:05:45+01:00
+author: Mikey
 summary: A guide for wrapping Go code in Swift for use within a native macOS or iOS application.
 ---
 
