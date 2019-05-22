@@ -8,7 +8,7 @@ clean:
 .PHONY: dev
 dev: URL ?= $(shell emporter get -q 1313)
 dev:
-	@if [ -z "$(URL)" ]; then echo "*** Emporter URL not found." &> 2; exit 1; fi
+	@if [ -z "$(URL)" ]; then echo "*** Emporter URL not found." >&2; exit 1; fi
 	@hugo server --baseURL="$(URL)" --appendPort=false --liveReloadPort=443 --buildDrafts
 
 # ----------------------------------------------------------------------------------------
