@@ -1,51 +1,45 @@
 <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		{{- $title := "" }}
+	{{- $title := "" }}
 
-		{{- if eq .URL "/" }}
-			{{ $title = .Site.Title }}
-		{{- else }}
-			{{ $title = delimit (slice .Title "&middot;" .Site.Title) " " }}
-		{{- end }}
+	{{- if eq .URL "/" }}
+		{{ $title = .Site.Title }}
+	{{- else }}
+		{{ $title = delimit (slice .Title "&middot;" .Site.Title) " " }}
+	{{- end }}
+
+	{{ $description := default .Description (default .Summary .Params.ShortSummary) }}
 	
-		{{- $description := "" }}
+	<title>{{ $title }}</title>
+	<meta property="og:title" content="{{ $title }}">
+	<meta property="og:image" content="{{ "/images/og.png" | absURL }}">
+	{{ if $description }}
+	<meta name="description" content="{{ $description }}">
+	<meta name="og:description" content="{{ $description }}">
+	{{ end }}
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="{{ .Permalink }}">
 
-		{{- if eq .URL "/" }}
-			{{- $description = .Site.Params.Description }}
-		{{- else if .Description }}
-			{{- $description = .Description }}
-		{{- else if isset .Params "summary" }}
-			{{- $description = .Params.Summary }}
-		{{- else if .Summary }}
-			{{- $description = .Summary }}
-		{{- end }}
-		
-		<title>{{ $title }}</title>
-		<meta property="og:title" content="{{ $title }}">
-		<meta property="og:image" content="{{ "/images/og.png" | absURL }}">
-		{{ if $description }}
-		<meta name="description" content="{{ $description }}">
-		<meta name="og:description" content="{{ $description }}">
+	<!-- CSS -->
+	{{- $inServerMode	:= .Site.IsServer }}
+	{{- $cssTarget		:= "css/style.css" }}
+	{{- $cssOptions		:= cond ($inServerMode) (dict "targetPath" $cssTarget "enableSourceMap" true) (dict "targetPath" $cssTarget "outputStyle" "compressed") }}		
+	{{- $style			:= resources.Get "scss/tale.scss" | toCSS $cssOptions }}
+	<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+	<link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ "images/favicon-32x32.png" | relURL }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ "images/favicon-16x16.png" | relURL }}">
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ "images/apple-touch-icon.png" | relURL }}">
+
+	<!-- RSS -->
+	{{ with .Site.GetPage "/posts" }}
+		{{ with .OutputFormats.Get "rss" }}
+			{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 		{{ end }}
-		<meta property="og:type" content="website">
-		<meta property="og:url" content="{{ .Permalink }}">
-
-		<!-- CSS -->
-		{{- $inServerMode	:= .Site.IsServer }}
-		{{- $cssTarget		:= "css/style.css" }}
-		{{- $cssOptions		:= cond ($inServerMode) (dict "targetPath" $cssTarget "enableSourceMap" true) (dict "targetPath" $cssTarget "outputStyle" "compressed") }}		
-		{{- $style			:= resources.Get "scss/tale.scss" | toCSS $cssOptions }}
-  		<link rel="stylesheet" href="{{ $style.RelPermalink }}">
-  		<link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
-	
-		<!-- Favicon -->
-		<link rel="icon" type="image/png" sizes="32x32" href="{{ "images/favicon-32x32.png" | relURL }}">
-		<link rel="icon" type="image/png" sizes="16x16" href="{{ "images/favicon-16x16.png" | relURL }}">
-		<link rel="apple-touch-icon" sizes="180x180" href="{{ "images/apple-touch-icon.png" | relURL }}">
-	
-		<!-- RSS -->
-		<link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-	</head>
+	{{ end }}
+</head>

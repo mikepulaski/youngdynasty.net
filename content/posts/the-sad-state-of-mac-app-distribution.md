@@ -2,7 +2,7 @@
 title: "The Sad State of Mac App Distribution"
 date: 2019-08-14T10:30:00+02:00
 author: Mikey
-summary: Distributing outside of the Mac App Store has slowly become a nightmare.
+shortSummary: Distributing outside of the Mac App Store has slowly become a nightmare.
 ---
 
 Recent versions of macOS have sought to improve the integrity and security of the platform by asserting more control over applications. Since Mac OS X 10.8, applications without a valid signature were no longer opened without user intervention. Now, starting with macOS 10.14.5, the same holds true for apps which aren't notarized by Apple.

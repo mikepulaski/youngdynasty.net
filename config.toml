@@ -2,6 +2,7 @@ baseURL = "https://youngdynasty.net/"
 languageCode = "en-us"
 title = "Young Dynasty"
 theme = "tale"
+sectionPagesMenu = "main"
 pygmentsCodeFences = true
 pygmentsLinenos = "table"
 pygmentsUseClasses = true
