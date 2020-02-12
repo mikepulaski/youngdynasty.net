@@ -1,3 +1,2 @@
-<div class="post-info">
-    {{ with .Params.Author }} by {{ . }} {{ end }}
-</div>
+{{ with .Params.ShortSummary }}<div class="post-info">{{ . }}</div>{{ end }}
+<div class="post-line"></div>

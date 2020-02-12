@@ -1,12 +1,28 @@
+html, h1, h2, h3, h4, h5, h6 {
+    font-family: system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
 .nav li {
 	padding: 0 1rem 0 0;
 }
-.post-line {
-	margin: 0 auto 1rem;
-}
 .post-info {
 	margin: 0 auto 2rem;
+    font-family: system-ui, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	letter-spacing: normal;
 }
+.post-line {
+	border-top: 0.4rem solid #f7f7f7;
+	margin: 0 auto 2rem;
+}
+.post p {
+	text-align: left;
+}
+.post sup {
+	line-height: 0;
+}
+
 .nav-title, a {
 	color: #6b38a2;
 }
@@ -27,6 +43,7 @@ article h1 a, article h2 a, article h3 a {
 article h1 a:hover, article h2 a:hover, article h3 a:hover {
 	text-decoration: none !important; 
 }
+
 code {
 	border-radius: 3px;
 	color: #d44950;
