@@ -1,5 +1,6 @@
 build/*
 .DS_Store
 
+logs/*
 public/*
 resources/_gen/*
