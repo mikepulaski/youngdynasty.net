@@ -93,3 +93,5 @@ Regardless, the changes are significant enough that even if the existing project
 I'd love to fix this myself, but I just don't know if I have the time or need for it _yet_. I've shipped [Emporter](https://emporter.app) on the Mac App Store and do want to distribute a version independently, but it may not be economically feasible for me to shift focus at this time.
 
 I would love to hear back from the community and discuss how we can move forward. Don't hesitate to get in touch via [@YoungDynastyNet](https://twitter.com/YoungDynastyNet) or [mikey@youngdynasty.net](mailto:mikey@youngdynasty.net). My DMs are open.
+
+_Update (17/02/2020): Vadim Shpakovski, the author of_ NativeConnect, _has written a prototype to replace Sparkle which is being used in production. [Read more...](https://nativeconnect.app/blog/auto-updating-sandboxed-mac-apps-without-sparkle/)_
