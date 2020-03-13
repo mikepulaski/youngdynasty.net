@@ -10,17 +10,19 @@ A little over a year ago, I launched [Emporter](https://emporter.app) to help we
 
 Here's the twist: Emporter is really a collection of services and components, all of which are written in Go. The Mac app is nothing more than a wrapper around an embedded Go client library. The server-side code is fault-tolerant, horizontally scalable, and available in multiple regions --- but most importantly, it's written in tandem with the client such that _everything_ is testable.
 
-It sounds crazy, but advances in tooling made it possible for me release a stable, fully functional version in just a few months of my free time. To celebrate its first anniversary, I'm stoked to share about how I wrote Emporter and what I learned from it.
+It sounds crazy, but advances in tooling made it possible for me release a stable, fully functional version in just a few months of my free time. To celebrate its first anniversary, I'm stoked to share about how I wrote Emporter and what I learned along the way.
 
 ## Let's Go!
 
-Go makes it easy to write simple, reliable software with clear patterns for concurrency. Its simplicity is a feature: there is no type hierarchy or generics. It has fast compile times, runs anywhere, and has an awesome standard library. It's also very opinionated: packages requires well-defined file (and code) structure, plus it has its own linting/formatting tools. As a result, I find that projects written in Go are maintainable and easy to understand.
+Go makes it easy to write simple, reliable software with clear patterns for concurrency. Its simplicity is a feature: there is no type hierarchy or generics. It has fast compile times, runs anywhere, and has an awesome standard library. It's also very opinionated: Go has its own built-in linting and formatting tools, plus it requires packages to have well-defined file (and code) structure. As a result, Go code is fairly predictable, which I find makes it easy to maintain.
 
-**Each major Emporter component is written in Go.** In short, the Mac app leverages native frameworks and languages (AppKit, Swift) to interface with an embedded, cross-platform Go library. It's not as hacky as you think: it's even distributed on the Mac App Store. I've also written an article about [embedding Go in Swift]({{< ref "./writing-mac-apps-in-go" >}}), which includes a sample project.
+**Each major Emporter component is written in Go.**
 
-The decision to write a native Mac app using Go is atypical --- I'm not really aware of others who've done this. However, it's ended up beind a _huge_ win: it's easy for me to move fast during development while producing a stable, performant product.
+In short, Emporter's Mac app leverages uses Apple-specific technology (AppKit, Swift) to interface with an embedded, cross-platform Go library. It's not as hacky as you think: this is the same thing, fundamentally, as using a C or Objective-C framework from Swift. And of course, it passes App Store review. If you want to know more about this, I wrote an article about [embedding Go in Swift]({{< ref "./writing-mac-apps-in-go" >}}) last year which includes a sample project.
 
-To better understand its merits, we need to dive deep into Emporter's service architecture. Doing so will give us a clear picture of how features and fixes move gracefully from development to production in a completely controlled environment.
+The decision to use Go to write a native Mac is atypical --- I'm not really aware of others who've done this. The path less traveled has ended up beind a _huge_ win: it's easy for me to move fast during development while producing a stable, performant product.
+
+Go is one of the major factors in helping me rapidly ship performant, predictable code, from development to production. To better understand how, we need to dive deeper into Emporter's service architecture.
 
 ## The actors at play
 
@@ -77,7 +79,7 @@ Postgres provides sane commands with clear approaches to handle these kinds of s
 
 ## Streamlined development and deployment
 
-If I've lost you a little bit, all is forgiven --- TL;DR, there are a lot of moving parts. If Emporter's infrastructure (and code) wasn't managed properly, it'd be a nightmare to develop and keep its services online. Plus, if it wasn't a joy to work on, it'd be a pretty shitty side project. 😅
+If I've lost you a little bit, all is forgiven --- TL;DR, there are a lot of moving parts. Suffice to say, it'd be a nightmare to develop and keep Emporter's services online if things weren't managed properly. Not to mention, if it wasn't actually fun to work on, it'd be a pretty shitty side project. 😅
 
 Keeping things maintainable has come down to three things: creating a stable environment, programmatically asserting behavior within it, and deploying _exact_ replicas of the environment when appropriate.
 
@@ -124,12 +126,12 @@ It's worth noting that Docker's desktop app ships with Kubernetes, so I'm still 
 
 The main draw back to using Kubernetes is that there is overhead associated with running the cluster, which is disproportionate for small projects like Emporter. However, I think the trade-off is worth it: for an extra ~\$70/month, I don't have to spend _any_ recurring time on infrastructure or lose sleep to keep my services online.
 
+[^3]: At the time, I chose Google Cloud Provider (GCP), but they recently announced that they'll start charging multi-regional configurations. I'll likely move away from GCP within the next month or so, which shouldn't be a huge deal given I can run my stack anywhere.
+
 ## That's all, folks
 
-Emporter has been an awesome side project because I was able to solve technical problems that I had a genuine interest in solving. Recent advances in tooling allowed me to focus on writing and shipping code, rather than fighting invisible battles.
+Emporter has been an awesome side project. I was able to address several technical problems that I had a genuine interest in solving. Recent advances in tooling allowed me to focus on writing and shipping code, rather than fighting invisible battles.
 
-It's been the ideal project to add to my portfolio because it shows off nearly my entire skillset: web/backend engineering, native Apple development, and UX design. Although not a success financially, my initial motivation for the project was to be able to _ship something_ that represents _me_.
+It's been the ideal project to add to my portfolio because it shows off nearly my entire skillset: web/backend engineering, native Apple development, and UX design. Although not a success financially, my initial motivation for the project was to be able to _ship something_ that represents _me_: a full-stack developer.
 
 _If you think I'd be an asset for you (or your team), shoot an email to [mikey@youngdynasty.net](mailto:mikey@youngdynasty.net). Or, if you want to keep in touch, I'm [@YoungDynastyNet](https://twitter.com/YoungDynastyNet) on Twitter. My DMs are open._ 🥰
-
-[^3]: At the time, I chose Google Cloud Provider (GCP), but they recently announced that they'll start charging multi-regional configurations. I'll likely move away from GCP within the next month or so, which shouldn't be a huge deal given I can run my stack anywhere.
