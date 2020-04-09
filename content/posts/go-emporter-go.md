@@ -1,16 +1,15 @@
 ---
 title: Go, Emporter, Go!
 date: 2020-03-13
-draft: true
 author: Mikey
 shortSummary: Emporter uses Go, Docker and Kubernetes to deliver a rock-solid native macOS app.
 ---
 
 A little over a year ago, I launched [Emporter](https://emporter.app) to help web developers on the Mac live-share their web projects, without needing to deploy code or manage their own server(s). **Emporter** means _to take away_ in French: developers use it to share their projects "on the go". If you're familiar with _ngrok_, it's like that but with a native UI that designers can use, too.
 
-Here's the twist: Emporter is really a collection of services and components, all of which are written in Go. The Mac app is nothing more than a wrapper around an embedded Go client library. The server-side code is fault-tolerant, horizontally scalable, and available in multiple regions --- but most importantly, it's written in tandem with the client such that _everything_ is testable.
+Here's the twist: Emporter is really a collection of services and components, all of which are written in Go. The Mac app is nothing more than a wrapper around an embedded Go client library. The server-side code is fault-tolerant, horizontally scalable, and available in multiple regions --- but most importantly, it's written in tandem with the client such that _everything_ is testable. It sounds crazy, but advances in tooling made it possible for me release a stable, fully functional version in just a few months of my free time.
 
-It sounds crazy, but advances in tooling made it possible for me release a stable, fully functional version in just a few months of my free time. To celebrate its first anniversary, I'm stoked to share about how I wrote Emporter and what I learned along the way.
+To celebrate its first anniversary, I'm stoked to share about how I wrote Emporter and what I learned along the way.
 
 ## Let's Go!
 
@@ -18,7 +17,7 @@ Go makes it easy to write simple, reliable software with clear patterns for conc
 
 **Each major Emporter component is written in Go.**
 
-In short, Emporter's Mac app leverages uses Apple-specific technology (AppKit, Swift) to interface with an embedded, cross-platform Go library. It's not as hacky as you think: this is the same thing, fundamentally, as using a C or Objective-C framework from Swift. And of course, it passes App Store review. If you want to know more about this, I wrote an article about [embedding Go in Swift]({{< ref "./writing-mac-apps-in-go" >}}) last year which includes a sample project.
+In short, Emporter's Mac app leverages Apple-specific technology (AppKit, Swift) to interface with an embedded, cross-platform Go library. It's not as hacky as you think: this is the same thing, fundamentally, as using a C or Objective-C framework from Swift. And of course, it passes App Store review. If you want to know more about this, I wrote an article about [embedding Go in Swift]({{< ref "./writing-mac-apps-in-go" >}}) last year which includes a sample project.
 
 The decision to use Go to write a native Mac is atypical --- I'm not really aware of others who've done this. The path less traveled has ended up beind a _huge_ win: it's easy for me to move fast during development while producing a stable, performant product.
 
@@ -118,7 +117,7 @@ With Go (plus the reproducible environment), test-driven development seems less 
 
 While Docker lets me create reproducible environments which are deployable anywhere, the last thing I want to do is... deployment. I'd hate to feel like I was constantly "on call" for what I consider to be a side project. So I decided to give [Kubernetes](https://kubernetes.io) a try, and holy shit, it is awesome!
 
-Kubernetes the automates deployment, scaling, and management of (Docker) containers in production environments, based on the same principles which allow Google to run billions of containers a week. I'm obviously not suggesting that I expect Emporter will _need_ to meet such a high demand --- it's most certainly a niche market. However, cloud providers offer a managed Kubernetes service, some of which only require you to pay for the servers (nodes) in the cluster.[^3] Shut up and take my money!
+Kubernetes automates deployment, scaling, and management of (Docker) containers in production environments, based on the same principles which allow Google to run billions of containers a week. I'm obviously not suggesting that I expect Emporter will _need_ to meet such a high demand --- it's most certainly a niche market. However, cloud providers offer a managed Kubernetes service, some of which only require you to pay for the servers (nodes) in the cluster.[^3] Shut up and take my money!
 
 In effect, all I had to do is write a few service definitions for Kubernetes, and deployment was taken care of for me. These definitions are quite powerful: I can define health checks, automatic scaling, resource requirements, and more. It handles rolling updates, too, so services stay online even when new versions are deployed.
 
